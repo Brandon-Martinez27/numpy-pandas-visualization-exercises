@@ -4,7 +4,7 @@
 # Use the following code for the questions below:
 # 
 
-# In[202]:
+# In[4]:
 
 
 import numpy as np
@@ -24,6 +24,7 @@ a[a < 0].shape
 # In[204]:
 
 
+# count of the booleans
 (a < 0).sum()
 
 
@@ -57,22 +58,22 @@ a[(a > 0) & (a % 2 == 0)].shape
 
 # 4. If you were to add 3 to each data point, how many positive numbers would there be?
 
-# In[209]:
+# In[5]:
 
 
 a_plus_three = a + 3
 
 
-# In[210]:
+# In[6]:
 
 
-a_plus_three[(a_plus_three > 0) & (a_plus_three % 2 == 0)].shape
+a_plus_three[(a_plus_three > 0)].shape
 
 
-# In[211]:
+# In[7]:
 
 
-((a_plus_three > 0) & (a_plus_three % 2 == 0)).sum()
+((a_plus_three > 0)).sum()
 
 
 # 5. If you squared each number, what would the new mean and standard deviation be?
@@ -151,7 +152,7 @@ a_z_score
 
 # ### Setup 1
 
-# In[221]:
+# In[8]:
 
 
 import numpy as np
@@ -170,43 +171,52 @@ a
 
 # Use python's built in functionality/operators to determine the following:
 
-# In[223]:
+# In[9]:
 
 
 #Exercise 1 - Make a variable called sum_of_a to hold the sum of all the numbers in above list
-sum_of_a = a.sum()
+sum_of_a = sum(a)
 sum_of_a
 
 
-# In[224]:
+# In[10]:
 
 
 # Exercise 2 - Make a variable named min_of_a to hold the minimum of all the numbers in the above list
-min_of_a = a.min()
+min_of_a = min(a)
 min_of_a
 
 
-# In[225]:
+# In[11]:
 
 
 # Exercise 3 - Make a variable named max_of_a to hold the max number of all the numbers in the above list
-max_of_a = a.max()
+max_of_a = max(a)
 max_of_a
 
 
-# In[226]:
+# In[12]:
 
 
 # Exercise 4 - Make a variable named mean_of_a to hold the average of all the numbers in the above list
-mean_of_a = sum_of_a / a.shape
+mean_of_a = sum_of_a / len(a)
 mean_of_a
+
+
+# In[14]:
+
+
+# Exercise 5 - Make a variable named product_of_a to hold the product of multiplying 
+# all the numbers in the above list together
+prod_of_a = 1
+for n in a:
+    prod_of_a *= n
+prod_of_a
 
 
 # In[227]:
 
 
-# Exercise 5 - Make a variable named product_of_a to hold the product of multiplying 
-# all the numbers in the above list together
 product_of_a = a.prod()
 product_of_a
 
@@ -219,25 +229,39 @@ squares_of_a = a**2
 squares_of_a
 
 
-# In[229]:
+# In[15]:
 
 
 # Exercise 7 - Make a variable named odds_in_a. It should hold only the odd numbers
+odds_in_a = [n for n in a if n % 2 != 0]
+odds_in_a
+
+
+# In[229]:
+
+
 odds_in_a = a[a % 2 != 0]
 odds_in_a
+
+
+# In[16]:
+
+
+# Exercise 8 - Make a variable named evens_in_a. It should hold only the evens.
+evens_in_a = [n for n in a if n % 2 == 0]
+evens_in_a
 
 
 # In[230]:
 
 
-# Exercise 8 - Make a variable named evens_in_a. It should hold only the evens.
 evens_in_a = a[a % 2 == 0]
 evens_in_a
 
 
 # ### Setup 2
 
-# In[231]:
+# In[17]:
 
 
 ## What about life in two dimensions? A list of lists is matrix, a table, a spreadsheet, a chessboard...
@@ -370,8 +394,10 @@ np.transpose(b)
 
 # Exercise 11 - reshape the array b to be a single list of 6 numbers. (1 x 6)
 
-np.reshape(b,np.prod(b.shape)) # hardcoded <np.reshape(b,6)>
+np.reshape(b,np.prod(b.shape)) 
+# hardcoded <np.reshape(b,6)>
 # also works <b.reshape(1, 6)>
+# <b.flatten()>
 
 
 # In[243]:
@@ -469,7 +495,7 @@ c_transposed
 
 
 # Exercise 6 - Get the dot product of the array c with c.
-c_dot_pro = c.dot(c,c)
+c_dot_pro = c.dot(c,c) # <c.dot(c)>
 c_dot_pro
 
 
@@ -566,6 +592,8 @@ unique_numbers_in_d
 
 # Exercise 7 - Determine how many unique numbers there are in d.
 
+# len(np.unique(d))
+# np.unique(d).size
 how_many_unique_d = unique_numbers_in_d.shape
 how_many_unique_d
 
